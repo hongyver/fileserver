@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  fileserver:
+    build: .
+    image: fileserver:latest
+    container_name: fileserver-container
+    restart: unless-stopped    
+    ports:
+      - "3090:3090"
+    volumes:
+      - ./files:/app/files
