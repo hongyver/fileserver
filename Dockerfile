@@ -4,5 +4,5 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 RUN mkdir -p files
-EXPOSE 3090 3091
+EXPOSE 3090
 CMD ["node", "server.js"]

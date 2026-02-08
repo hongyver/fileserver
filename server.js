@@ -7,8 +7,7 @@ const https = require('https');
 const http = require('http');
 
 const app = express();
-const PROTOCOL = (process.env.PROTOCOL || 'http').toLowerCase();
-const PORT = PROTOCOL === 'https' ? 3091 : 3090;
+const PORT = 3090;
 
 // Ensure files directory exists
 const filesDir = path.join(__dirname, 'files');
@@ -92,8 +91,8 @@ app.post('/upload', upload.single('file'), async (req, res) => {
         originalFilename: originalFilename,
         savedFilename: savedFilename,
         size: stats.size,
-        downloadUrl: `${PROTOCOL}://hongyver.iptime.org:${PORT}/files/${savedFilename}`,
-        viewUrl: `${PROTOCOL}://hongyver.iptime.org:${PORT}/view/${savedFilename}`
+        downloadUrl: `http://hongyver.iptime.org:${PORT}/files/${savedFilename}`,
+        viewUrl: `http://hongyver.iptime.org:${PORT}/view/${savedFilename}`
       });
     }
 
@@ -108,8 +107,8 @@ app.post('/upload', upload.single('file'), async (req, res) => {
       originalFilename: req.originalFilename,
       savedFilename: req.savedFilename,
       size: req.file.size,
-      downloadUrl: `${PROTOCOL}://hongyver.iptime.org:${PORT}/files/${req.savedFilename}`,
-      viewUrl: `${PROTOCOL}://hongyver.iptime.org:${PORT}/view/${req.savedFilename}`
+      downloadUrl: `http://hongyver.iptime.org:${PORT}/files/${req.savedFilename}`,
+      viewUrl: `http://hongyver.iptime.org:${PORT}/view/${req.savedFilename}`
     });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });

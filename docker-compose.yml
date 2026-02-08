@@ -4,11 +4,8 @@ services:
     build: .
     image: fileserver:latest
     container_name: fileserver-container
-    restart: unless-stopped
-    environment:
-      - PROTOCOL=${PROTOCOL:-http}
+    restart: unless-stopped    
     ports:
       - "3090:3090"
-      - "3091:3091"
     volumes:
       - ./files:/app/files
